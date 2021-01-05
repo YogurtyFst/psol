@@ -137,7 +137,7 @@
                     <!--driver-->
                     <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
                     <!--jdbc url-->
-                    <jdbcUrl>jdbc:mysql://localhost:3306/psol?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false</jdbcUrl>
+                    <jdbcUrl>jdbc:mysql://121.196.103.192:3306/psol?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false</jdbcUrl>
                     <!--生成文件类型-->
                     <fileType>WORD</fileType>
                     <!--打开文件输出目录-->

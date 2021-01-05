@@ -30,6 +30,8 @@ public class HomePageService {
     ServiceMapper serviceMapper;
     @Autowired
     ProductChoiceMapper choiceMapper;
+    @Autowired
+    CartItemService cartItemService;
 
     public List<Product> loadProduct(String type, int current) {
         int size = 20;
@@ -73,7 +75,7 @@ public class HomePageService {
         Product p = productMapper.getProductById(id);
         productDetail.setId(id);
         productDetail.setName(p.getName());
-        productDetail.setStoreName(productMapper.getStoreNameByProdId(id));
+        productDetail.setStoreName(productMapper.getStoreNameByStoreId(p.getStoreId()));
         productDetail.setDisplayPrice(p.getLowPrice());
         productDetail.setSales(p.getSales());
         productDetail.setAddress(p.getAddress());

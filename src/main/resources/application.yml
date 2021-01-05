@@ -8,11 +8,9 @@ spring:
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
-  mvc:
-    static-path-pattern: [/doc.html]
 
 server:
   port: 8080
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
