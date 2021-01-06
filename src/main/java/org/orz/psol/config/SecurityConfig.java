@@ -60,7 +60,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers(
                 "/css/**", "/js/**", "/index.html", "/img/**", "/fonts/**", "/favicon.ico",
                 "/doc.html","/webjars/bycdao-ui/**","/v2/api-docs","/swagger-resources/**",
-                "/webjars/**","/swagger-ui.html","/s/**","/static/**","/register/**","/common/**"
+                "/webjars/**","/swagger-ui.html","/s/**","/static/**","/register/**","/common/**",
+                "/order/**"
         );
     }
 

@@ -245,6 +245,13 @@ public class SavaPic {
             System.out.println("value:"+str[1]);
 
         }
+
+    }
+
+    @Test
+    void t6() {
+//        System.out.println(new Date(System.currentTimeMillis()));
+        System.out.println(new java.util.Date(System.currentTimeMillis()));
     }
 
 
