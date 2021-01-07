@@ -38,12 +38,19 @@ public class HomePageController {
 
     @GetMapping("/store")
     String store(@RequestParam String userId) {
+
         return "store";
     }
 
     @GetMapping("/profile")
     String profile(@RequestParam String userId) {
+
         return "profile";
+    }
+
+    @GetMapping("/myOrder")
+    String order(@RequestParam String userId) {
+        return "myorder";
     }
 
 }
