@@ -41,4 +41,9 @@ public class HomePageController {
         return "store";
     }
 
+    @GetMapping("/profile")
+    String profile(@RequestParam String userId) {
+        return "profile";
+    }
+
 }
