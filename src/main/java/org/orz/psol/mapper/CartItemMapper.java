@@ -3,6 +3,7 @@ package org.orz.psol.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.*;
 import org.orz.psol.model.CartItem;
+import org.orz.psol.model.JsonModel.CartItemGroup;
 import org.orz.psol.model.dbModel.Product;
 import org.orz.psol.model.dbModel.ProductChoice;
 
@@ -52,5 +53,8 @@ public interface CartItemMapper extends BaseMapper<CartItem> {
 
     @Select("select  id,store_id,name,cover_img,address,high_price,low_price,description,product_params,sales,type,freight,price_range from product where id='${product_id}'")
     Product slecetproduct(String product_id);
+
+    @Select("select store_id, cast(GROUP_CONCAT(choice_id) as char) as choice_ids, CAST(GROUP_CONCAT(number) as char) as numbers from cart_item where user_id='${id}' group by store_id")
+    CartItemGroup[] getItemGroups(String id);
 
 }

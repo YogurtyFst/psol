@@ -16,6 +16,6 @@ import java.sql.Date;
  */
 public interface OrderMapper extends BaseMapper<Order> {
 
-    @Insert("INSERT INTO `order` ( id, user_id, store_id, address_id, status, price, order_time ) VALUES ( '${id}', '${userId}', '${storeId}', ${addressId}, '${status}', ${price}, ${time} )")
-    void create(String id, String userId, String storeId, int addressId, String status, float price, String time);
+    @Insert("INSERT INTO `order` ( id, user_id, store_id, status, price, order_time ) VALUES ( '${id}', '${userId}', '${storeId}', '${status}', ${price}, ${time} )")
+    void create(String id, String userId, String storeId, String status, float price, String time);
 }

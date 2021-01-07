@@ -2,9 +2,12 @@ package org.orz.psol;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.junit.jupiter.api.Test;
+import org.orz.psol.mapper.CartItemMapper;
 import org.orz.psol.mapper.UserMapper;
+import org.orz.psol.model.JsonModel.CartItemGroup;
 import org.orz.psol.model.User;
 import org.orz.psol.service.AdminServiceImpl;
+import org.orz.psol.service.CartService;
 import org.orz.psol.service.UserService;
 import org.orz.psol.utils.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +50,19 @@ public class FuncTest {
         }
 
 
+
+    }
+
+    @Autowired
+    CartItemMapper cartItemMapper;
+
+    @Test
+    void te() {
+        CartItemGroup[] gs = cartItemMapper.getItemGroups("016950a3c749447cb4859a2e4bc55bd8");
+        for (int i = 0; i < gs.length; i++) {
+            System.out.println(gs[i]);
+
+        }
 
     }
 
