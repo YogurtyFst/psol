@@ -56,9 +56,10 @@ public class CartService {
                 CartProduct cartProduct = new CartProduct();
                 String choiceId = choices[j];
                 QueryWrapper<ProductChoice> wrapper2 = new QueryWrapper<>();
-                wrapper2.eq("choice_id", choiceId).select("choice","price");
+                wrapper2.eq("choice_id", choiceId).select("choice","price","storage");
                 ProductChoice productChoice = productChoiceMapper.selectOne(wrapper2);
                 String choiceName = productChoice.getChoice();
+                int storage = productChoice.getStorage();
                 QueryWrapper<CartItem> wrapper = new QueryWrapper<>();
                 wrapper.eq("choice_id", choiceId).select("product_id","number","invalid");
                 CartItem item = cartItemMapper.selectOne(wrapper);
@@ -69,6 +70,7 @@ public class CartService {
                 String productName = product.getName();
                 String coverImg = product.getCoverImg();
 
+                cartProduct.setStorage(storage);
                 cartProduct.setProductId(productId);
                 cartProduct.setChoiceId(choiceId);
                 cartProduct.setCoverImg(coverImg);

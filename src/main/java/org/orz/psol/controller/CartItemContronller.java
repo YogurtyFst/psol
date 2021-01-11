@@ -23,11 +23,6 @@ public class CartItemContronller {
     @Autowired
     CartService cartService;
 
-    @GetMapping ("/test")
-    public void test(){
-        System.out.println("test ");
-    }
-
     @PostMapping("/add")
     RespBean addCartItem(@RequestParam String choiceId,@RequestParam String userId,@RequestParam int number) {
         if (choiceId==null && userId == null )
@@ -52,33 +47,6 @@ public class CartItemContronller {
         }
     }
 
-
-
-    @PostMapping("/reduce")
-    RespBean reduceCartItem(@RequestParam String choiceId,@RequestParam String userId) {
-        if (choiceId==null && userId == null )
-            return RespBean.error("数据不完整!");
-
-        String productId = cartItemService.slecetProductId(choiceId);
-        String storeId = cartItemService.slecetStoreId(productId);
-
-        int number = cartItemService.selectNumberCartItem(choiceId, userId);
-        if(number == 0){
-            return RespBean.error("购物车不存在该商品!");
-        }
-        else if (number == 1) {
-            boolean success=cartItemService.deleteCartItem(choiceId, userId);
-            if (!success)
-                return RespBean.error("移出购物车失败11！");
-            else return RespBean.ok("移出购物车成功！");
-        } else {
-
-            boolean success = cartItemService.updateCartItem(number-1,choiceId,userId);
-            if (!success)
-                return RespBean.error("移出购物车失败22！");
-            else return RespBean.ok("移出购物车成功！");
-        }
-    }
     @PostMapping("/delete")
     RespBean deleteCartItem(
             @RequestParam String choiceId,  @RequestParam String userId) {
@@ -96,9 +64,20 @@ public class CartItemContronller {
         return cartItemService.account(userId);
     }
 
-    @PostMapping("/cartview")
-    public List<CartItemInfo> cartview(String userId){
-        return cartItemService.cartview(userId);
+
+    @PostMapping("/update")
+    RespBean reduceCartItem(@RequestParam String choiceId,@RequestParam String userId,@RequestParam int number) {
+        if (choiceId==null || userId == null || number==0)
+            return RespBean.error("数据不完整!");
+
+        String productId = cartItemService.slecetProductId(choiceId);
+        String storeId = cartItemService.slecetStoreId(productId);
+
+        boolean success=cartItemService.updateCartItem(number,choiceId,userId );
+        if (!success)
+            return RespBean.error("更新失败！");
+        else return RespBean.ok(null);
+
     }
 
 }

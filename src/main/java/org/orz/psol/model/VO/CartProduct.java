@@ -11,5 +11,6 @@ public class CartProduct {
     int number;
     String productName;
     String choiceName;
+    int storage;
     boolean selected;
 }

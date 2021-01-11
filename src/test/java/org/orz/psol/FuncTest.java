@@ -74,8 +74,6 @@ public class FuncTest {
                 p.setCoverImg(s);
                 productMapper.updateById(p);
             }
-
-
         }
     }
 
