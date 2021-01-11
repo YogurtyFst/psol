@@ -29,6 +29,7 @@ import java.sql.Date;
 import java.util.*;
 import java.util.List;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @SpringBootTest
 public class SavaPic {
     @Autowired

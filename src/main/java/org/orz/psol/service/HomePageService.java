@@ -86,7 +86,8 @@ public class HomePageService {
         productDetail.setDescription(p.getDescription());
         productDetail.setType(p.getType());
         List<ProductArg> args = new ArrayList<>();
-        String[] params = p.getProductParams().split("\\$");
+        String[] params = new String[0];
+        try {params = p.getProductParams().split("\\$");}catch (Exception e){}
         for (int i = 1; i < params.length; i++) {
             String[] str = params[i].split(":");
             ProductArg arg = new ProductArg();

@@ -4,14 +4,18 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.junit.jupiter.api.Test;
 import org.orz.psol.mapper.CartItemMapper;
 import org.orz.psol.mapper.UserMapper;
+import org.orz.psol.mapper.dbMapper.ProductMapper;
 import org.orz.psol.model.JsonModel.CartItemGroup;
 import org.orz.psol.model.User;
+import org.orz.psol.model.dbModel.Product;
 import org.orz.psol.service.AdminServiceImpl;
 import org.orz.psol.service.CartService;
 import org.orz.psol.service.UserService;
 import org.orz.psol.utils.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 @SpringBootTest
 public class FuncTest {
@@ -55,15 +59,24 @@ public class FuncTest {
 
     @Autowired
     CartItemMapper cartItemMapper;
+    @Autowired
+    ProductMapper productMapper;
 
     @Test
     void te() {
-        CartItemGroup[] gs = cartItemMapper.getItemGroups("016950a3c749447cb4859a2e4bc55bd8");
-        for (int i = 0; i < gs.length; i++) {
-            System.out.println(gs[i]);
+        List<Product> products = productMapper.selectList(new QueryWrapper<Product>().select("id","cover_img"));
+
+        for (Product p : products) {
+            if (p.getCoverImg().contains("/pics")) {
+                System.out.println(p.getCoverImg());
+                String s = p.getCoverImg().replaceFirst("/pics","");
+                System.out.println(s);
+                p.setCoverImg(s);
+                productMapper.updateById(p);
+            }
+
 
         }
-
     }
 
 

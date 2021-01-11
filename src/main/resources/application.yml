@@ -8,7 +8,10 @@ spring:
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
-
+  servlet:
+    multipart:
+      max-request-size: 500MB
+      max-file-size: 500MB
 server:
   port: 8080
 mybatis-plus:
